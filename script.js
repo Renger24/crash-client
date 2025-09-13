@@ -60,7 +60,7 @@ class CrashGame {
 
     connectToServer() {
         // Замените на URL вашего сервера после деплоя
-        const serverUrl = 'https://ваш-сервер.vercel.app';
+        const serverUrl = 'https://crash-client-omega.vercel.app/';
         
         try {
             this.socket = io(serverUrl, {
