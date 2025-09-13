@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white;
+    min-height: 100vh;
+    padding: 15px;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.balance {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4ecdc4;
+}
+
+.game-area {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.multiplier-display {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #ff6b6b;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ecdc4, #ff6b6b);
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+.timer {
+    font-size: 1.1em;
+    color: #ffd93d;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.status {
+    font-size: 1em;
+    color: #ffd93d;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.bet-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.bet-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bet-controls input {
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    outline: none;
+}
+
+.bet-controls input:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.bet-button, .cashout-button {
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+
+.bet-button {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.bet-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+.cashout-button {
+    background: linear-gradient(45deg, #4ecdc4, #66ffb3);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+}
+
+.cashout-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6);
+}
+
+.players-section, .history-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.players-section h3, .history-section h3 {
+    margin-bottom: 12px;
+    color: #ffd93d;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.players-list, .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.player-item, .history-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85em;
+}
+
+.player-item.betting {
+    border-left: 3px solid #4ecdc4;
+}
+
+.player-item.cashed-out {
+    border-left: 3px solid #ffd93d;
+}
+
+.player-item.lost {
+    border-left: 3px solid #ff6b6b;
+}
+
+.history-item.win {
+    border-left: 3px solid #4ecdc4;
+}
+
+.history-item.crash {
+    border-left: 3px solid #ff6b6b;
+}
