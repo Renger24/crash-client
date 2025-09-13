@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crash Game - Telegram Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 CRASH GAME</h1>
+            <div class="balance">Баланс: <span id="balance">1000</span> 💰</div>
+        </div>
+
+        <div class="game-area">
+            <div class="multiplier-display" id="multiplier">1.00x</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="timer" id="timer">00:05</div>
+            <div class="status" id="status">Ожидание начала...</div>
+        </div>
+
+        <div class="bet-section">
+            <div class="bet-controls">
+                <input type="number" id="betAmount" placeholder="Сумма ставки" min="10" max="10000" value="100">
+                <button class="bet-button" id="placeBet">Сделать ставку</button>
+                <button class="cashout-button" id="cashout" disabled>Забрать выигрыш</button>
+            </div>
+        </div>
+
+        <div class="players-section">
+            <h3>Игроки в раунде:</h3>
+            <div class="players-list" id="playersList"></div>
+        </div>
+
+        <div class="history-section">
+            <h3>История игр:</h3>
+            <div class="history-list" id="historyList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
