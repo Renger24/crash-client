@@ -59,37 +59,45 @@ class CrashGame {
     }
 
     connectToServer() {
-        // Замените на URL вашего сервера после деплоя
-        const serverUrl = 'https://crash-server-theta.vercel.app/';
+    // Убедитесь, что здесь правильный URL
+    const serverUrl = 'https://crash-server-theta.vercel.app';
+    
+    try {
+        this.socket = io(serverUrl, {
+            transports: ['websocket', 'polling'], // Попробуем оба метода
+            reconnection: true,
+            reconnectionAttempts: 5,
+            reconnectionDelay: 1000,
+            timeout: 10000
+        });
         
-        try {
-            this.socket = io(serverUrl, {
-                transports: ['websocket'],
-                reconnection: true,
-                reconnectionAttempts: 5,
-                reconnectionDelay: 1000
-            });
-            
-            this.setupSocketListeners();
-        } catch (error) {
-            console.error('Ошибка подключения к серверу:', error);
-            this.elements.status.textContent = 'Ошибка подключения к серверу';
-        }
+        this.setupSocketListeners();
+    } catch (error) {
+        console.error('Ошибка подключения к серверу:', error);
+        this.elements.status.textContent = 'Ошибка подключения к серверу';
     }
+}
 
-    setupSocketListeners() {
-        this.socket.on('connect', () => {
-            console.log('Подключено к серверу');
-            this.socket.emit('joinGame', {
-                userId: this.userId,
-                userName: this.userName
-            });
-        });
+setupSocketListeners() {
+    this.socket.on('connect', () => {
+        console.log('✅ Подключено к серверу');
+        this.elements.status.textContent = 'Подключено к серверу';
         
-        this.socket.on('disconnect', () => {
-            console.log('Отключено от сервера');
-            this.elements.status.textContent = 'Потеряно соединение с сервером';
+        this.socket.emit('joinGame', {
+            userId: this.userId,
+            userName: this.userName
         });
+    });
+    
+    this.socket.on('connect_error', (error) => {
+        console.error('❌ Ошибка подключения:', error);
+        this.elements.status.textContent = 'Ошибка подключения: ' + error.message;
+    });
+    
+    this.socket.on('disconnect', () => {
+        console.log('⚠️ Отключено от сервера');
+        this.elements.status.textContent = 'Потеряно соединение с сервером';
+    });
         
         this.socket.on('gameState', (data) => {
             this.gameState = data.state;
